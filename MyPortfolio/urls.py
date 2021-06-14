@@ -1,4 +1,5 @@
 """MyPortfolio URL Configuration
+   https://www.youtube.com/watch?v=gYsDoh-a3xE&list=PLGbolyKVwIrS7O_elz0YfQg5OB_vI7aIk&index=7
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/3.2/topics/http/urls/
