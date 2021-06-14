@@ -19,6 +19,11 @@ section{
     justify-content: space-between;
     align-items: center;
 }
+/* .banner p{
+    color: rgb(248, 126, 78);;
+} */
+
+
 
 .banner h2{
     font-size: 3em;
@@ -30,6 +35,7 @@ section{
     font-size: 1.3em;
     /* color:rgb(228, 119, 30); */
     color:rgb(248, 126, 78);
+    /* color:#111; */
     font-weight: 500;
 }
 .banner h3{
@@ -47,6 +53,7 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    transition: 0.5s;
     
 }
 header ul{
@@ -75,6 +82,17 @@ header .logo{
     font-weight: 700;
     letter-spacing: 2px;
 }
+.sticky{
+    background: rgb(167, 165, 165);
+    padding: 10px 70px;
+    box-shadow: 0px 5px 20px rgba(0,0,0,0.1);
+}
+.sticky .logo{
+    color:#111;
+}
+.sticky ul li a{
+    color:#111;
+}
 .heading{
     width:100%;
     text-align: center ;
@@ -90,4 +108,87 @@ header .logo{
 }
 .heading.white{
     color:#fff;
+}
+.content{
+    display: flex;
+    justify-content: space-between;
+
+}
+.formBox{
+    min-width: 60%;
+}
+.formBox form{
+    display: flex;
+    flex-direction: column;
+}
+.formBox form h3, .contactInfo h3{
+    color: #fff;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.formBox form input, .formBox form textarea{
+    margin-bottom: 20px;
+    padding: 15px;
+    font-size: 16px;
+    background: transparent;
+    border: none;
+    outline: none;
+    background: #222;
+    color:#fff;
+    resize: none;
+}
+
+.formBox form textarea{
+    min-height: 200px;
+}
+.formBox form input::placeholder, .formBox form textarea{
+    color:#999;
+
+
+}
+.formBox form input[type='submit']{
+    max-width: 100px;
+    background: #2196f3;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 5px;
+}
+.contactInfo{
+    min-width: 40px;
+
+}
+.contactInfoBox{
+    position: relative;
+}
+.contactInfoBox .box{
+    position: relative;
+    padding: 20px;
+    display: flex;
+}
+
+.contactInfoBox .box .icon{
+    min-width: 40px;
+    padding-top: 4px;
+    color:#fff;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    font-size: 24px;
+
+
+}
+.contactInfoBox .box .text{
+    display: flex;
+    margin-left: 20px;
+    font-size: 16px;
+    color:rgb(248, 126, 78);
+    flex-direction: column;
+    font-weight: 300;
+}
+.contactInfoBox .box .text h3{
+    font-weight: 500;
+    margin-bottom: 0;
 }
