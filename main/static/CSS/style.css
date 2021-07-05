@@ -12,7 +12,7 @@ section{
 .banner{
     position:relative;
     min-height: 100vh;
-    background: url('../images/pic3.jpeg');
+    /* background: url('../images/background8.jpg'); */
     background-position: right;
     background-size: cover;
     display:flex;
