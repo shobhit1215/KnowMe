@@ -24,7 +24,7 @@
             <li><a href="#home" onclick="toggleMenu();">Home</a></li>
             <li><a href="#skills" onclick="toggleMenu();">Skills</a></li>
             <li><a href="#projects" onclick="toggleMenu();">Projects</a></li>
-            <li><a href="#testi" onclick="toggleMenu();">Education</a></li>
+            <li><a href="#testi" onclick="toggleMenu();">Background</a></li>
             <!-- <li><a href="">Interests</a></li> -->
             <li><a href="#contact" onclick="toggleMenu();">Contact</a></li>
 
@@ -34,8 +34,8 @@
         <div class="text">
             <h2>Hello, I am<br><span>Shobhit Bansal</span></h2>
             <h3>I am a Software Engineer</h2>
-            <br>
-            <!-- <p>I am an undergraduate student of IIIT Vadodara.<br>I am a Data Science enthusiast and a Django Backend Developer.</p> -->
+                <br>
+                <!-- <p>I am an undergraduate student of IIIT Vadodara.<br>I am a Data Science enthusiast and a Django Backend Developer.</p> -->
         </div>
         <!-- <div class="info">
             <h4>About Me</h4>
@@ -50,33 +50,34 @@
         </div>
         {% for key,value in skill.items %}
         <div class="heading">
-              <h4>{{key}}</h4>
+            <h4>{{key}}</h4>
         </div>
-           
-            
-          {% for v in value %}
-          <div class="row">
+
+
+        {% for v in value %}
+        <div class="row">
             <div class="col-sm-3">
-                <p styling="font-size:20px;padding:2px 0px;">{{v.name}}</p>
+                <h5><span class="badge bg-light text-dark">{{v.name}}</span></h5>
+                <!-- <p styling="font-size:20px;padding:2px 0px;">{{v.name}}</p> -->
 
             </div>
             <div class="col-sm-9">
                 <div class="progress" style="margin-bottom: 32px; margin-top: 4px;">
-                    <div class="progress-bar progress-bar-striped" role="progressbar" style="width: {{v.percent}}%;"
-                        aria-valuenow="{{v.percent}}" aria-valuemin="0" aria-valuemax="100">{{v.percent}}%</div>
+                    <div class="progress-bar progress-bar bg-secondary " role="progressbar" style="width: {{v.percent}}%"
+                        aria-valuenow="{{v.percent}}" aria-valuemin="0" aria-valuemax="100" ></div><h6 style="margin-left: 1rem;">{{v.percent}}%</h6>
                 </div>
             </div>
         </div>
 
- 
+
 
         {% endfor %}
-         
+
 
         {% endfor %}
-        
-       
-        
+
+
+
         <!-- <div class="row">
             <div class="col-sm-3">
                 <p styling="font-size:20px;padding:2px 0px;">HTML</p>
@@ -119,37 +120,45 @@
     <section class="contact" id="projects">
         <div class="heading white">
             <h2>My Projects</h2>
-            <p>Lorem Ipsum</p>
         </div>
-        {% for key,value in skill.items %}
+        {% for key,value in project.items %}
+
+        {% if value %}
         <div class="heading">
-              <h4 style="color:white;padding-top: 2rem;">{{key}}</h4>
+            <h4 style="color:white;padding-top: 2rem;">{{key}}</h4>
         </div>
-           
-          <div class="row">
+        {% else %}
+
+        {% endif %}
+
+        <div class="row">
             {% for v in value %}
+           
+
             <div class="card col-6 col-md-4 offset-1 mr-auto mb-3" style="width: 18rem;">
-                <img src="{% static 'images/gurukul.png' %}" class="card-img-top" alt="..." height="200px"
-                width="200px">
+                <img src="{{v.image.url}}" class="card-img-top" alt="..." height="200px" width="200px">
                 <div class="card-body">
-                  <h3 class="card-title mx-auto">Project Title</h3>
-                  <h5 class="card-subtitle mb-2 text-muted">Tech Stack</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <h3 class="card-title mx-auto">{{v.title}}</h3>
+                    <h5 class="card-subtitle mb-2 text-muted">{{v.stack}}</h5>
+                    <p class="card-text">{{v.description}}</p>
+                    <a href="{{v.link}}" class="btn btn-primary">View Project</a>
                 </div>
             </div>
+            
             {% endfor %}
 
-          </div>  
-          
-         
+        </div>
+        
+        {% endfor %}
 
- 
+
+
+
+
+
+
 
         
-         
-
-        {% endfor %}
         <!-- <div class="card" style="width: 18rem;">
             <img src="{% static 'images/pic1.jpeg' %}" class="card-img-top" alt="..." height="300px"
             width="300px">
@@ -210,43 +219,44 @@
     </section>
     <section id="testi">
         <div class="heading">
-            <h2>Testimonials/Education</h2>
-            <p>Lorem Ipsum</p>
+            <h2>Background</h2>
 
         </div>
         <div class="row">
+            {% for background in backgrounds %}
             <div class="col-sm-6">
                 <div class="card text-center">
-                    <div class="card-header">
-                        Featured
+                    <div class="card-header" style="color: white;background-color: black;">
+                        <h3 >{{background.topic}}</h3>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h4 class="card-title">{{background.title}}</h4>
+                        <p class="card-text">{{background.text}}</p>
+                        
                     </div>
                     <div class="card-footer text-muted">
-                        2 days ago
+                        {{background.start}}-{{background.end}}
                     </div>
                 </div>
 
             </div>
-            <div class="col-sm-6">
+            {% endfor %}
+            <!-- <div class="col-sm-6">
                 <div class="card text-center">
-                    <div class="card-header">
-                        Featured
+                    <div class="card-header" style="color: white;background-color: black;">
+                        <h3 >Topic</h3>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title">Title</h5>
+                        <p class="card-text">Text.</p>
+                        
                     </div>
                     <div class="card-footer text-muted">
-                        2 days ago
+                        Time
                     </div>
                 </div>
 
-            </div>
+            </div> -->
 
 
         </div>
@@ -268,7 +278,8 @@
                         </div>
                         <div class="text">
                             <h3>Address</h3>
-                            <p>64-B Chandra Nagar <br>Chakeri Road Lal Banglow,<br> Kanpur<br>Uttar Pradesh<br>208007</p>
+                            <p>64-B Chandra Nagar <br>Chakeri Road Lal Banglow,<br> Kanpur<br>Uttar Pradesh<br>208007
+                            </p>
                         </div>
                     </div>
                     <div class="box">
@@ -288,37 +299,55 @@
                         </div>
                         <div class="text">
                             <h3>Email</h3>
+                            
                             <p>imshobhit.sb@gmail.com</p>
+                           
+                            
                         </div>
                     </div>
                     <div class="box">
                         <div class="icon">
-                            <a href="https://www.linkedin.com/in/shobhit-bansal-6377b7200/"><i class="fa fa-linkedin"></i></a>
+                            <a href="https://www.linkedin.com/in/shobhit-bansal-6377b7200/"><i
+                                    class="fa fa-linkedin"></i></a>
 
                         </div>
                         <div class="icon">
-                            <a href="https://github.com/shobhit1215" ><i class="fa fa-github"></i></a>
+                            <a href="https://github.com/shobhit1215"><i class="fa fa-github"></i></a>
 
                         </div>
-                        
-                        
+
+
                     </div>
                 </div>
             </div>
             <div class="formBox">
-                <form action="">
+                <form action="" method="POST">
+                    {% csrf_token %}
+
                     <h3>Message Me</h3>
-                    <input type="text" placeholder="Full Name" name="" id="">
-                    <input type="text" placeholder="email" name="" id="">
-                    <textarea placeholder="Your Message" name="" id="" ></textarea>
+                    <input type="text" placeholder="Full Name" name="Name" id="">
+                    <input type="text" placeholder="email" name="Email" id="">
+                    <textarea placeholder="Your Message" name="Message" id=""></textarea>
                     <input type="submit" value="Send">
                 </form>
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert alert-{{message.tags}}">
+                 {{message}}
+                </div>
+                {% endfor %}
+                
+
+                {% endif%}
             </div>
+          
+           
         </div>
 
 
     </section>
-    
+   
+
 
     <!-- Optional JavaScript; choose one of the two! -->
 
